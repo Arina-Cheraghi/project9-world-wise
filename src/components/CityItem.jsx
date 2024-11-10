@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import { UseCities } from "../contexts/CitiesContext";
 import styles from "./CityItem.module.css";
 import { Link } from "react-router-dom";
 
@@ -11,28 +11,24 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function CityItem({ city }) {
+  const { currentCity } = UseCities();
   const { cityName, emoji, date, id, position } = city;
-  
+
   return (
-    <Link to={`${id}?lat=${position.lat}&lng=${position.lng}`} className={styles.cityItem}>
-      <span className={styles.emoji}>{emoji}</span>
-      <h3 className={styles.name}>{cityName}</h3>
-      <time className={styles.date}>{formatDate(date)}</time>
-      <button className={styles.deleteBtn}>&times;</button>
-    </Link>
+    <li>
+      <Link
+        to={`${id}?lat=${position.lat}&lng=${position.lng}`}
+        className={`${styles.cityItem} ${
+          id === currentCity.id ? styles["cityItem--active"] : ""
+        }`}
+      >
+        <span className={styles.emoji}>{emoji}</span>
+        <h3 className={styles.name}>{cityName}</h3>
+        <time className={styles.date}>{formatDate(date)}</time>
+        <button className={styles.deleteBtn}>&times;</button>
+      </Link>
+    </li>
   );
 }
-
-CityItem.propTypes = {
-  city: PropTypes.shape({
-    cityName: PropTypes.string.isRequired,
-    emoji: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-    position: PropTypes.string.isRequired,
-    lat: PropTypes.string.isRequired,
-    lng: PropTypes.string.isRequired,
-  }).isRequired,
-};
 
 export default CityItem;
