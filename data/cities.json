@@ -1,18 +1,6 @@
 {
   "cities": [
     {
-      "cityName": "Lisbon",
-      "country": "Portugal",
-      "emoji": "🇵🇹",
-      "date": "2027-10-31T15:59:59.138Z",
-      "notes": "My favorite city so far!",
-      "position": {
-        "lat": 38.727881642324164,
-        "lng": -9.140900099907554
-      },
-      "id": 73930385
-    },
-    {
       "cityName": "Madrid",
       "country": "Spain",
       "emoji": "🇪🇸",
@@ -22,7 +10,7 @@
         "lat": 40.46635901755316,
         "lng": -3.7133789062500004
       },
-      "id": 17806751
+      "id": "17806751"
     },
     {
       "cityName": "Berlin",
@@ -34,7 +22,91 @@
         "lat": 52.53586782505711,
         "lng": 13.376933665713324
       },
-      "id": 98443197
+      "id": "98443197"
+    },
+    {
+      "id": "64c5",
+      "cityName": "Javier",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2024-11-10T14:13:26.310Z",
+      "notes": "kjnlsxnl",
+      "position": {
+        "lat": "42.47209690919285",
+        "lng": "-1.3183593750000002"
+      }
+    },
+    {
+      "id": "b727",
+      "cityName": "Javier",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2024-11-10T14:16:48.475Z",
+      "notes": "bkb kb ",
+      "position": {
+        "lat": "42.47209690919285",
+        "lng": "-1.3183593750000002"
+      }
+    },
+    {
+      "id": "468c",
+      "cityName": "Ajat",
+      "country": "France",
+      "emoji": "🇫🇷",
+      "date": "2024-11-10T14:17:20.846Z",
+      "notes": "yesss",
+      "position": {
+        "lat": "45.166547157856016",
+        "lng": "1.0107421875000002"
+      }
+    },
+    {
+      "id": "82a2",
+      "cityName": "Arak",
+      "country": "Iran (Islamic Republic of)",
+      "emoji": "🇮🇷",
+      "date": "2024-11-10T14:39:42.406Z",
+      "notes": "are",
+      "position": {
+        "lat": "34.016241889667036",
+        "lng": "49.921875"
+      }
+    },
+    {
+      "id": "08ca",
+      "cityName": "Sotresgudo",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2024-11-10T14:54:35.399Z",
+      "notes": "1",
+      "position": {
+        "lat": "42.61779143282346",
+        "lng": "-4.218750000000001"
+      }
+    },
+    {
+      "id": "8647",
+      "cityName": "Fresnedilla",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2024-11-10T14:54:41.197Z",
+      "notes": "2",
+      "position": {
+        "lat": "40.245991504199026",
+        "lng": "-4.658203125000001"
+      }
+    },
+    {
+      "id": "1947",
+      "cityName": "Lora del Rio",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2024-11-10T14:54:46.573Z",
+      "notes": "",
+      "position": {
+        "lat": "37.63163475580645",
+        "lng": "-5.47119140625"
+      }
     }
   ]
 }

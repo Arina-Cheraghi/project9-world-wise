@@ -5,6 +5,10 @@ import ButtonBack from "./ButtonBack";
 import { useUrlPosition } from "../hooks/useUlrPosition";
 import Message from "./Message";
 import Spinner from "./Spinner";
+import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "react-datepicker";
+import { UseCities } from "../contexts/CitiesContext";
+import { useNavigate } from "react-router-dom";
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -22,12 +26,15 @@ function Form() {
   const [geocodingError, setGeocodingError] = useState("");
 
   const [lat, lng] = useUrlPosition();
+  const { CreateCity, isLoading } = UseCities();
+  const navigate = useNavigate();
 
   const [cityName, setCityName] = useState("");
   const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
 
   useEffect(
     function () {
+      if (!lat && !lng) return;
       async function feetchCityData() {
         try {
           setIsLoadingGeocoding(true);
@@ -58,9 +65,28 @@ function Form() {
 
   if (geocodingError) return <Message message={geocodingError} />;
   if (isLoadingGeocoding) return <Spinner />;
+  if (!lat && !lng) return <Message message={"start by clicking on the map"} />;
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!cityName || !date) return;
+    const newCity = {
+      cityName,
+      country,
+      emoji,
+      date,
+      notes,
+      position: { lat, lng },
+    };
+    await CreateCity(newCity);
+    navigate("/app/cities");
+  }
 
   return (
-    <form className={styles.form}>
+    <form
+      className={`${styles.form} ${isLoading ? styles.loading : ""}`}
+      onSubmit={handleSubmit}
+    >
       <div className={styles.row}>
         <label htmlFor="cityName">City name</label>
         <input
@@ -72,11 +98,15 @@ function Form() {
       </div>
 
       <div className={styles.row}>
-        <label htmlFor="date">When did you go to {cityName}?</label>
-        <input
+        <label htmlFor="date">
+          When did you go to{" "}
+          <strong style={{ color: "#00c46a" }}>{cityName}</strong>?
+        </label>
+        <DatePicker
           id="date"
-          onChange={(e) => setDate(e.target.value)}
-          value={date}
+          onChange={(date) => setDate(date)}
+          selected={date}
+          dateFormat={"yyyy/MM/dd"}
         />
       </div>
 
